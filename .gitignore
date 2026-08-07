@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Local development artifacts
+work/
+scratch/
+*.tmp
+
+# Carry state is private by default. Allow intentionally reviewed exports.
+.codex-carry/*
+!.codex-carry/outbox/
+!.codex-carry/outbox/**

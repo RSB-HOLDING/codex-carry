@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex Carry"
+  short_description: "Resume work from a safe project checkpoint"
+  default_prompt: "Use $codex-carry to create a safe checkpoint for this project and explain how a fresh Codex session can resume it."
+
+policy:
+  allow_implicit_invocation: false

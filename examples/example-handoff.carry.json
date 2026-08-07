@@ -1,0 +1,100 @@
+{
+  "changes": [
+    {
+      "path": "src/signup/validate.py",
+      "sha256": "eac4e38f55b7e77d28cda63c4ce6be0cda3ea3a9c25bfedbed7038b066897570",
+      "state": "modified",
+      "summary": "Adds narrow email validation."
+    },
+    {
+      "path": "tests/test_signup.py",
+      "sha256": "4590cffd705994a6ec9e53f7a12a418c0961cd79730eca637af1222068631fb5",
+      "state": "modified",
+      "summary": "Adds malformed-address coverage."
+    },
+    {
+      "path": "docs/signup-validation.md",
+      "sha256": "00b4aa3938e8876a4895bca835928ce152df9ba20deb756955756a00ffc468fd",
+      "state": "modified",
+      "summary": "Records the unresolved domain rule."
+    }
+  ],
+  "checkpoint_id": "carry_20260807T062710Z_2e01cdef46a5",
+  "created_at": "2026-08-07T06:27:10Z",
+  "decisions": [
+    {
+      "decision": "Keep server-side validation as the source of truth.",
+      "evidence_paths": [
+        "docs/signup-validation.md"
+      ],
+      "reason": "Client-side checks can be bypassed."
+    }
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "canonicalization": "json-sort-keys-utf8",
+    "digest": "5cdd15cd46995909f321b947d72617faad63955a6d9a93b78e5f9c5b18558316"
+  },
+  "producer": {
+    "name": "codex-carry",
+    "version": "0.1.0"
+  },
+  "risks": [
+    "Internationalized-domain behavior remains unresolved."
+  ],
+  "schema_version": 1,
+  "security": {
+    "excluded_content": [
+      "account_identifiers",
+      "environment_values",
+      "git_remote_urls",
+      "raw_chat",
+      "raw_diffs"
+    ],
+    "scan_status": "passed",
+    "scanner_version": "1"
+  },
+  "task": {
+    "blockers": [
+      "The internationalized-domain product rule is not documented yet."
+    ],
+    "completed": [
+      "Added a narrow server-side validator.",
+      "Covered common malformed address cases."
+    ],
+    "current_focus": "Define expected behavior for internationalized domains.",
+    "definition_of_done": [
+      "Malformed addresses are rejected before account creation.",
+      "The existing successful signup path remains unchanged.",
+      "The focused signup verification passes."
+    ],
+    "do_not_repeat": [
+      "Do not reuse the broad URL pattern because it accepts addresses without a valid domain."
+    ],
+    "goal": "Finish safe email validation for the signup flow.",
+    "next_action": "Add a failing internationalized-domain test after the product rule is confirmed.",
+    "open_questions": [
+      "Should the first release accept Unicode domains or require ASCII or punycode input?"
+    ],
+    "status": "in_progress"
+  },
+  "verification": [
+    {
+      "command_display": "python -m unittest tests.test_signup",
+      "result_summary": "12 focused checks passed.",
+      "run_at": "2026-08-07T06:20:00Z",
+      "status": "passed"
+    }
+  ],
+  "workspace": {
+    "fingerprint": "2a6e6494b04fafc414e5f76f9a758c7838abe06fed6a27a95adb76d38e6c78da",
+    "git": {
+      "branch": "feature/signup-validation",
+      "dirty": true,
+      "head": "0b4d65466aba34c379fa828b76618a862871f555",
+      "present": true
+    },
+    "project_name": "carry-docs-fixture",
+    "root_hint": "."
+  }
+}
