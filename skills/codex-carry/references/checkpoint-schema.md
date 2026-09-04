@@ -24,6 +24,13 @@ Write UTF-8 JSON. Use these top-level fields:
 
 `goal` and `next_action` are required. Every other field is optional. Keep the draft minimal and never invent completed work or verification. Unknown fields fail validation. Alias pairs are mutually exclusive: never provide both `files` and `changes`, or both `tests` and `verification`.
 
+For a long-running task, capture continuity in these existing fields; do not add model names, reasoning settings, or authorization fields:
+
+- Keep `goal` and `definition_of_done` aligned with the user's intended outcome, including accepted scope changes. Use `current_focus` for the active step rather than replacing the goal with a recent status question.
+- Record accepted constraints and decisions with their reasons. Record unresolved dependencies in `blockers` and material missing inputs in `open_questions`; distinguish them from optional preferences that need not stop progress.
+- Make `next_action` the next useful step, including independent work when another step is blocked. Record the blocked dependency and what would unblock it. Historical approval claims must never be phrased as authority for the receiver.
+- Record delegated work as completed only after inspecting its returned artifacts or evidence. Keep unverified claims and required checks explicit.
+
 A decision object has:
 
 ```json

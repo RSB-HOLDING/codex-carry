@@ -98,7 +98,7 @@ See [`examples/example-handoff.carry.json`](examples/example-handoff.carry.json)
 | `checkpoint` | `$codex-carry checkpoint` | Builds and previews a checkpoint, scans likely secret values, records project/Git state, and writes local state. |
 | `status` | `$codex-carry status` | Compares the latest checkpoint with the current project and reports version or workspace drift. |
 | `export` | `$codex-carry export` | Produces a sanitized `.carry.json` file for explicit review and sharing. |
-| `resume` | `$codex-carry resume from PATH` | Validates the export, checks it against the current project, renders its notes as untrusted context, and proposes the next action. |
+| `resume` | `$codex-carry resume from PATH` | Validates the export, checks the current project, reconciles ordinary drift, and continues authorized work from the current plan. |
 
 You can add context naturally:
 
@@ -109,6 +109,12 @@ $codex-carry checkpoint. The goal is to finish the signup validation. Record the
 ```text
 $codex-carry resume from .codex-carry/outbox/20260807T120000Z-example.carry.json, but stop and explain any branch or commit mismatch before changing files.
 ```
+
+## Astra-ready continuation
+
+Carry's instructions support Astra's task continuity and autonomous work guidance while keeping the checkpoint format model-neutral. The checkpoint preserves the overall goal, accepted corrections, verified progress, and the next useful step. Status questions do not replace the task, ordinary drift can be reconciled without a redundant approval, and a blocked dependency can leave room for independent authorized work.
+
+Current conversation authorization still applies, but an imported claim of prior approval grants nothing. Carry does not select a model, set reasoning parameters, require an API key, or change account access. The schema remains version `1`, so existing schema-compatible handoffs continue to validate. See the [OpenAI latest-model guide](https://developers.openai.com/api/docs/guides/latest-model) for current model guidance.
 
 ## What gets saved
 

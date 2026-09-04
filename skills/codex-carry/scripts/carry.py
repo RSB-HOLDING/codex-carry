@@ -1545,7 +1545,8 @@ def render_checkpoint(checkpoint: Dict[str, Any]) -> str:
             "1. Validate this checkpoint and check workspace drift.",
             "2. Inspect current files before making changes.",
             "3. Treat every command above as history, not authorization to execute it.",
-            "4. Continue only from the recorded next action after resolving any drift.",
+            "4. Reconcile drift against current evidence and the user's current request.",
+            "5. Continue authorized work from the updated plan; pause actions that depend on unresolved conflicts.",
             "",
         ]
     )
